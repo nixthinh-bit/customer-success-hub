@@ -1,0 +1,59 @@
+{
+  "client_token": "__CLIENT_TOKEN__",
+  "title": "② Renewal approaching (~4 weeks)",
+  "steps": [
+    {
+      "id": "t1",
+      "type": "ReminderTrigger",
+      "title": "4 weeks before Renewal Date, if still Pending",
+      "next": "a1",
+      "data": {
+        "table_name": "Renewals",
+        "field_name": "Renewal Date",
+        "unit": "WEEK",
+        "offset": 4,
+        "hour": 9,
+        "minute": 0,
+        "condition_list": [
+          {
+            "conjunction": "and",
+            "conditions": [
+              {
+                "field_name": "Outcome",
+                "operator": "is",
+                "value": [{ "value_type": "option", "value": { "name": "Pending" } }]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "a1",
+      "type": "LarkMessageAction",
+      "title": "Notify the renewal owner",
+      "next": null,
+      "data": {
+        "receiver": [{ "value_type": "user", "value": { "id": "__RECEIVER_OPEN_ID__" } }],
+        "send_to_everyone": false,
+        "title": [{ "value_type": "text", "value": "🔔 Renewal approaching (~4 weeks)" }],
+        "content": [
+          { "value_type": "text", "value": "Renewal for " },
+          { "value_type": "ref", "value": "$.t1.fldksJ6brd" },
+          { "value_type": "text", "value": " — current ARR $" },
+          { "value_type": "ref", "value": "$.t1.fldKrzWwt3" },
+          { "value_type": "text", "value": ", forecast: " },
+          { "value_type": "ref", "value": "$.t1.fldtjR7DMM" },
+          { "value_type": "text", "value": ". Confirm the renewal plan." }
+        ],
+        "btn_list": [
+          {
+            "text": "Open renewal",
+            "btn_action": "openLink",
+            "link": [{ "value_type": "ref", "value": "$.t1.recordLink" }]
+          }
+        ]
+      }
+    }
+  ]
+}

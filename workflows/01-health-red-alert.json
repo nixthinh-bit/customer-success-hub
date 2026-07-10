@@ -1,0 +1,53 @@
+{
+  "client_token": "__CLIENT_TOKEN__",
+  "title": "① Health → Red alert",
+  "steps": [
+    {
+      "id": "t1",
+      "type": "ChangeRecordTrigger",
+      "title": "When a usage snapshot has Health Score < 50",
+      "next": "a1",
+      "data": {
+        "table_name": "Usage and Healthscore",
+        "trigger_control_list": [],
+        "condition_list": [
+          {
+            "conjunction": "and",
+            "conditions": [
+              {
+                "field_name": "Health Score",
+                "operator": "isLess",
+                "value": [{ "value_type": "number", "value": 50 }]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "a1",
+      "type": "LarkMessageAction",
+      "title": "Notify the CS owner",
+      "next": null,
+      "data": {
+        "receiver": [{ "value_type": "user", "value": { "id": "__RECEIVER_OPEN_ID__" } }],
+        "send_to_everyone": false,
+        "title": [{ "value_type": "text", "value": "⚠️ Account health dropped to Red" }],
+        "content": [
+          { "value_type": "text", "value": "Account " },
+          { "value_type": "ref", "value": "$.t1.fld5UIlnjZ" },
+          { "value_type": "text", "value": " has a Red health score (" },
+          { "value_type": "ref", "value": "$.t1.fldcLgvmls" },
+          { "value_type": "text", "value": "). Open the snapshot to plan a save-play." }
+        ],
+        "btn_list": [
+          {
+            "text": "Open record",
+            "btn_action": "openLink",
+            "link": [{ "value_type": "ref", "value": "$.t1.recordLink" }]
+          }
+        ]
+      }
+    }
+  ]
+}

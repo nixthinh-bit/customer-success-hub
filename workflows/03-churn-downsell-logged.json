@@ -1,0 +1,60 @@
+{
+  "client_token": "__CLIENT_TOKEN__",
+  "title": "③ Churn / Downsell logged",
+  "steps": [
+    {
+      "id": "t1",
+      "type": "ChangeRecordTrigger",
+      "title": "When a Revenue Movement is Churn or Downsell",
+      "next": "a1",
+      "data": {
+        "table_name": "Revenue Movements",
+        "trigger_control_list": [],
+        "condition_list": [
+          {
+            "conjunction": "and",
+            "conditions": [
+              {
+                "field_name": "Event Type",
+                "operator": "containsAny",
+                "value": [
+                  { "value_type": "option", "value": { "name": "Churn" } },
+                  { "value_type": "option", "value": { "name": "Downsell" } }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "a1",
+      "type": "LarkMessageAction",
+      "title": "Flag it for reason tagging",
+      "next": null,
+      "data": {
+        "receiver": [{ "value_type": "user", "value": { "id": "__RECEIVER_OPEN_ID__" } }],
+        "send_to_everyone": false,
+        "title": [{ "value_type": "text", "value": "📉 Churn / Downsell logged" }],
+        "content": [
+          { "value_type": "text", "value": "A " },
+          { "value_type": "ref", "value": "$.t1.fldCGJfadA" },
+          { "value_type": "text", "value": " movement was recorded for " },
+          { "value_type": "ref", "value": "$.t1.fldLZFMWoV" },
+          { "value_type": "text", "value": " (ARR $" },
+          { "value_type": "ref", "value": "$.t1.fldreHiduq" },
+          { "value_type": "text", "value": " → $" },
+          { "value_type": "ref", "value": "$.t1.fldQXfPZ6k" },
+          { "value_type": "text", "value": "). Make sure a Reason is attached so churn reporting stays complete." }
+        ],
+        "btn_list": [
+          {
+            "text": "Open movement",
+            "btn_action": "openLink",
+            "link": [{ "value_type": "ref", "value": "$.t1.recordLink" }]
+          }
+        ]
+      }
+    }
+  ]
+}

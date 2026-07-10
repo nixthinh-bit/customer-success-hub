@@ -1,0 +1,9 @@
+# build output — holds your own app_token + Base URL; never commit it
+base_ids.json
+
+__pycache__/
+*.pyc
+.venv/
+# transient files written by the workflow installer
+.cshwf_*.tmp.json
+.DS_Store

@@ -1,0 +1,21 @@
+{
+  "_comment": "Build output written by build_schema.py. The real base_ids.json is gitignored (it holds your own app_token + Base URL). This example only shows the shape.",
+  "app_token": "<your_base_app_token>",
+  "url": "https://<your-tenant>.larksuite.com/base/<your_base_app_token>",
+  "tables": {
+    "Portfolio": "tbl_xxxxxxxx",
+    "Usage and Healthscore": "tbl_xxxxxxxx",
+    "Renewals": "tbl_xxxxxxxx",
+    "Revenue Movements": "tbl_xxxxxxxx",
+    "Churn & Downsell Reasons": "tbl_xxxxxxxx",
+    "CSM Activities": "tbl_xxxxxxxx",
+    "Commercial Targets": "tbl_xxxxxxxx"
+  },
+  "fields": {
+    "<table_id>:<Field Name>": "fld_xxxxxxxx"
+  },
+  "dashboards": {
+    "CSM Weekly Review": "blk_xxxxxxxx",
+    "Executive Monthly — BOD": "blk_xxxxxxxx"
+  }
+}

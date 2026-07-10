@@ -1,0 +1,57 @@
+{
+  "client_token": "__CLIENT_TOKEN__",
+  "title": "④ CSM activity due tomorrow",
+  "steps": [
+    {
+      "id": "t1",
+      "type": "ReminderTrigger",
+      "title": "1 day before a Planned activity's Date",
+      "next": "a1",
+      "data": {
+        "table_name": "CSM Activities",
+        "field_name": "Date",
+        "unit": "DAY",
+        "offset": 1,
+        "hour": 9,
+        "minute": 0,
+        "condition_list": [
+          {
+            "conjunction": "and",
+            "conditions": [
+              {
+                "field_name": "Status",
+                "operator": "is",
+                "value": [{ "value_type": "option", "value": { "name": "Planned" } }]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "a1",
+      "type": "LarkMessageAction",
+      "title": "Remind the activity owner",
+      "next": null,
+      "data": {
+        "receiver": [{ "value_type": "user", "value": { "id": "__RECEIVER_OPEN_ID__" } }],
+        "send_to_everyone": false,
+        "title": [{ "value_type": "text", "value": "📅 CSM activity due tomorrow" }],
+        "content": [
+          { "value_type": "text", "value": "Upcoming " },
+          { "value_type": "ref", "value": "$.t1.fldSJnRVLd" },
+          { "value_type": "text", "value": " for " },
+          { "value_type": "ref", "value": "$.t1.fldc9l3UEz" },
+          { "value_type": "text", "value": " is due tomorrow." }
+        ],
+        "btn_list": [
+          {
+            "text": "Open activity",
+            "btn_action": "openLink",
+            "link": [{ "value_type": "ref", "value": "$.t1.recordLink" }]
+          }
+        ]
+      }
+    }
+  ]
+}
