@@ -15,7 +15,33 @@ lệnh — chạy lại là có một bản sao mới đã seed đầy đủ.
 
 ---
 
-## (1) Base này để làm gì
+## 🎥 Video giới thiệu
+
+https://github.com/nixthinh-bit/customer-success-hub/raw/main/assets/csmhub-demo.mp4
+
+---
+
+## (1) Nhân bản Base này
+
+> **▶️ [Nhân bản Base →](https://thinhle1.sg.larksuite.com/wiki/IS0AwYTdmiJIbxkOYsQlVwKbgLg?from=from_copylink)**
+> Mở link rồi dùng **Save as / Make a copy** để có bản sao chỉnh sửa được của riêng bạn.
+
+Hai cách để có bản của riêng bạn:
+
+1. **Native (nhanh nhất):** mở link mẫu ở trên → **Save as / Make a copy**.
+2. **Từ code (mới tinh + tái tạo được):**
+   ```bash
+   cd cs-hub
+   python3 build_schema.py     # Base mới + 7 bảng + field + link + formula
+   python3 seed_data.py        # dữ liệu hư cấu (dùng --reset để seed lại)
+   python3 make_dashboard.py   # hai dashboard
+   python3 workflows/setup_workflows.py   # bốn automation (disabled)
+   ```
+   `build_schema.py` idempotent và ghi mọi id vào `base_ids.json`.
+
+---
+
+## (2) Base này để làm gì
 
 Đa số CSM đang làm việc rải rác ở năm nơi: CRM cho account, một sheet cho health, một sheet
 khác cho tái ký, chat/email cho ghi chú churn, và một slide mỗi quý cho "con số". Sự phân
@@ -34,7 +60,7 @@ làm tái ký theo timeline, và báo cáo retention/expansion cho lãnh đạo 
 
 ---
 
-## (2) Cấu trúc & cách nhập dữ liệu
+## (3) Cấu trúc & cách nhập dữ liệu
 
 `Portfolio` là bảng trung tâm; mọi bảng khác đều liên kết về nó.
 
@@ -111,7 +137,7 @@ bản để các bản sao mới không kèm nó.
 
 ---
 
-## (3) Workflow — cài đặt & bảo trì
+## (4) Workflow — cài đặt & bảo trì
 
 Bốn automation đóng gói dạng JSON recipe + trình cài chạy một lệnh. Chúng được tạo ở trạng
 thái **tắt (disabled)**, để bạn kiểm tra người nhận và điều kiện trước khi có gì kích hoạt.
@@ -142,26 +168,6 @@ code. Xem flow đang có bằng `lark-cli base +workflow-list`, cập nhật b�
   theo CSM, status/health theo CSM, pipeline tái ký, activities.
 - **Executive Monthly — BOD** (chiến lược): tổng ARR, NRR%/GRR% blended, ARR bridge theo loại
   event, ARR theo segment/ngành, churn ARR theo lý do, funnel tái ký, NRR% theo CSM.
-
----
-
-## (4) Nhân bản Base này
-
-> **▶️ [Nhân bản Base →](https://thinhle1.sg.larksuite.com/wiki/IS0AwYTdmiJIbxkOYsQlVwKbgLg?from=from_copylink)**
-> Mở link rồi dùng **Save as / Make a copy** để có bản sao chỉnh sửa được của riêng bạn.
-
-Hai cách để có bản của riêng bạn:
-
-1. **Native (nhanh nhất):** mở link mẫu ở trên → **Save as / Make a copy**.
-2. **Từ code (mới tinh + tái tạo được):**
-   ```bash
-   cd cs-hub
-   python3 build_schema.py     # Base mới + 7 bảng + field + link + formula
-   python3 seed_data.py        # dữ liệu hư cấu (dùng --reset để seed lại)
-   python3 make_dashboard.py   # hai dashboard
-   python3 workflows/setup_workflows.py   # bốn automation (disabled)
-   ```
-   `build_schema.py` idempotent và ghi mọi id vào `base_ids.json`.
 
 ---
 

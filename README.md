@@ -15,7 +15,34 @@ from code — re-run two scripts and you get a fresh, fully-seeded copy.
 
 ---
 
-## (1) What this Base is for
+## 🎥 Demo video
+
+https://github.com/nixthinh-bit/customer-success-hub/raw/main/assets/csmhub-demo.mp4
+
+---
+
+## (1) Duplicate this Base
+
+> **▶️ [Duplicate this Base →](https://thinhle1.sg.larksuite.com/wiki/IS0AwYTdmiJIbxkOYsQlVwKbgLg?from=from_copylink)**
+> Open the link and use **Save as / Make a copy** to get your own editable copy.
+
+Two ways to get your own copy:
+
+1. **Native (fastest):** open the demo Base → `···` menu → **Save as Template** / **Make a
+   copy** → copy the share link and paste it above.
+2. **From code (fresh + reproducible):**
+   ```bash
+   cd cs-hub
+   python3 build_schema.py     # new Base + 7 tables + fields + links + formulas
+   python3 seed_data.py        # fictional dataset (use --reset to reseed)
+   python3 make_dashboard.py   # the two dashboards
+   python3 workflows/setup_workflows.py   # the four automations (disabled)
+   ```
+   `build_schema.py` is idempotent and writes every id to `base_ids.json`.
+
+---
+
+## (2) What this Base is for
 
 Most CSMs live across five disconnected places: a CRM for accounts, a spreadsheet for
 health, another sheet for renewals, chat/email for churn notes, and a slide once a quarter
@@ -35,7 +62,7 @@ work renewals on a timeline, and report retention/expansion to leadership from l
 
 ---
 
-## (2) Structure & how to enter data
+## (3) Structure & how to enter data
 
 `Portfolio` is the hub; every other table links back to it.
 
@@ -112,7 +139,7 @@ duplicating so fresh copies never include it.
 
 ---
 
-## (3) Workflows — set up & maintain
+## (4) Workflows — set up & maintain
 
 Four automations ship as JSON recipes plus a one-command installer. They are created
 **disabled**, so you review the recipient and conditions before anything fires.
@@ -144,27 +171,6 @@ way. Existing flows are listed with `lark-cli base +workflow-list` and updated w
   CSM, status/health by CSM, renewal pipeline, activities.
 - **Executive Monthly — BOD** (strategic): total ARR, blended NRR%/GRR%, ARR bridge by event
   type, ARR by segment/industry, churn ARR by reason, renewal funnel, NRR% by CSM.
-
----
-
-## (4) Duplicate this Base
-
-> **▶️ [Duplicate this Base →](https://thinhle1.sg.larksuite.com/wiki/IS0AwYTdmiJIbxkOYsQlVwKbgLg?from=from_copylink)**
-> Open the link and use **Save as / Make a copy** to get your own editable copy.
-
-Two ways to get your own copy:
-
-1. **Native (fastest):** open the demo Base → `···` menu → **Save as Template** / **Make a
-   copy** → copy the share link and paste it above.
-2. **From code (fresh + reproducible):**
-   ```bash
-   cd cs-hub
-   python3 build_schema.py     # new Base + 7 tables + fields + links + formulas
-   python3 seed_data.py        # fictional dataset (use --reset to reseed)
-   python3 make_dashboard.py   # the two dashboards
-   python3 workflows/setup_workflows.py   # the four automations (disabled)
-   ```
-   `build_schema.py` is idempotent and writes every id to `base_ids.json`.
 
 ---
 
