@@ -17,7 +17,7 @@ from code — re-run two scripts and you get a fresh, fully-seeded copy.
 
 ## 🎥 Demo video
 
-**[▶️ Watch the demo (mp4)](https://github.com/nixthinh-bit/customer-success-hub/raw/main/assets/csmhub-demo.mp4)** — opens in your browser's native player.
+https://github.com/user-attachments/assets/57e83780-ba4a-4f5e-a3f5-850f9d3e1412
 
 ---
 
