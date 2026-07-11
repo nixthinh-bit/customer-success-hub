@@ -17,7 +17,7 @@ lệnh — chạy lại là có một bản sao mới đã seed đầy đủ.
 
 ## 🎥 Video giới thiệu
 
-https://github.com/nixthinh-bit/customer-success-hub/raw/main/assets/csmhub-demo.mp4
+**[▶️ Xem video demo (mp4)](https://github.com/nixthinh-bit/customer-success-hub/raw/main/assets/csmhub-demo.mp4)** — mở bằng trình phát video mặc định của trình duyệt.
 
 ---
 
