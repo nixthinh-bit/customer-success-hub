@@ -17,7 +17,7 @@ from code — re-run two scripts and you get a fresh, fully-seeded copy.
 
 ## 🎥 Demo video
 
-https://github.com/nixthinh-bit/customer-success-hub/raw/main/assets/csmhub-demo.mp4
+<video src="https://github.com/nixthinh-bit/customer-success-hub/raw/main/assets/csmhub-demo.mp4" controls muted></video>
 
 ---
 
